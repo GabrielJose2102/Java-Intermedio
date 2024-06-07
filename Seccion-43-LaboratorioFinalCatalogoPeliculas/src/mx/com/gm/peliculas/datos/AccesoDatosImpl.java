@@ -12,7 +12,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
     @Override
     public boolean existe(String nombreRecurso){
         //Creamos el objeto de tipo file y con el metodo exists() comprobamos si esta creado el archivo
-        var archivo = new File(nombreRecurso);
+        File archivo = new File(nombreRecurso);
         return archivo.exists();
     }
 
@@ -21,7 +21,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
     @Override
     public List<Pelicula> listar(String nombreRecurso) throws LecturaDatosEx {
         //Creamos el objeto de tipo file y le pasamos el nombre del archivo
-        var archivo = new File(nombreRecurso);
+        File archivo = new File(nombreRecurso);
         //Creamos la lista de tipo Pelicula donde se va a listar lo que esta dentro del archivo
         List<Pelicula> peliculas = new ArrayList<>();
         //Try-Catch para capturar las excepciones y usar las creadas por nosotros.
@@ -29,7 +29,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
             /*Creamos un objeto de la clase BufferedReader y le pasamos el nombre del archivo como
               parametro al objeto FileReader que va dentro del BufferedReader para leer el contenido 
               del archivo*/
-            var entrada = new BufferedReader(new FileReader(archivo));
+            BufferedReader entrada = new BufferedReader(new FileReader(archivo));
             //Variable que resivira el contenido de linea por linea
             String linea = null;
             //Metodo readLine() para leer una linea del archivo
@@ -57,13 +57,13 @@ public class AccesoDatosImpl implements IAccesoDatos {
     @Override
     public void escribir(Pelicula pelicula, String nombreRecurso, boolean anexar) throws EscrituraDatosEx {
         //Creamos el objeto de tipo file y le pasamos el nombre del archivo
-        var archivo = new File(nombreRecurso);
+        File archivo = new File(nombreRecurso);
         //Try-Catch para capturar las excepciones y usar las creadas por nosotros.
         try {
             /*Creamos un objeto de la clase PrintWriter y le pasamos el nombre del archivo y la variable 
               booleana como parametro al objeto FileWriter que va dentro del PrintWriter para 
               escribir en el contenido del archivo*/
-            var salida = new PrintWriter(new FileWriter(archivo, anexar));
+            PrintWriter salida = new PrintWriter(new FileWriter(archivo, anexar));
             //Metodo println() para escribir una linea en el archivo
             salida.println(pelicula.toString());
             //Metodo close() para Cerrar el archivo luego de escribir en el
@@ -80,17 +80,17 @@ public class AccesoDatosImpl implements IAccesoDatos {
     @Override
     public String buscar(String nombreRecurso, String buscar) throws LecturaDatosEx {
         //Creamos el objeto de tipo file y le pasamos el nombre del archivo
-        var archivo = new File(nombreRecurso);
+        File archivo = new File(nombreRecurso);
         //Variable donde retornaremos el resultado
         String resultado = "";
         //Indice de posicionamiento del contenido buscado
-        var indice = 1;
+        int indice = 1;
         //Try-Catch para capturar las excepciones y usar las creadas por nosotros.
         try {
             /*Creamos un objeto de la clase BufferedReader y le pasamos el nombre del archivo como
               parametro al objeto FileReader que va dentro del BufferedReader para leer el contenido 
               del archivo en este caso uno en especifico*/
-            var entrada = new BufferedReader(new FileReader(archivo));
+            BufferedReader entrada = new BufferedReader(new FileReader(archivo));
             //Variable que resivira el contenido de linea por linea
             String linea = null;
             //Metodo readLine() para leer una linea del archivo
@@ -129,13 +129,13 @@ public class AccesoDatosImpl implements IAccesoDatos {
     @Override
     public void crear(String nombreRecurso) throws AccesoDatosEx {
         //Creamos el objeto de tipo file y le pasamos el nombre del archivo
-        var archivo = new File(nombreRecurso);
+        File archivo = new File(nombreRecurso);
         //Try-Catch para capturar las excepciones y usar las creadas por nosotros.
         try {
             /*Creamos un objeto de la clase PrintWriter y le pasamos el nombre del archivo y la variable 
               booleana como parametro al objeto FileWriter que va dentro del PrintWriter solo para 
               crear el archivo*/
-            var salida = new PrintWriter(new FileWriter(archivo));
+            PrintWriter salida = new PrintWriter(new FileWriter(archivo));
             //Creado el archivo podemos cerrarlo
             salida.close();
             System.out.println("Se ha creado el catalogo correctamente");
@@ -149,7 +149,7 @@ public class AccesoDatosImpl implements IAccesoDatos {
     @Override
     public void borrar(String nombreRecurso){
         //Creamos el objeto de tipo file y le pasamos el nombre del archivo
-        var archivo = new File(nombreRecurso);
+        File archivo = new File(nombreRecurso);
         //Comprobamos si existe el archivo
         if (archivo.exists()) {
             //De si existir se eliminara

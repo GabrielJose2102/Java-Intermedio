@@ -8,10 +8,10 @@ public class CatalogoPeliculasPresentacion {
         //Variable de la opcion que controla que se ejecuta del menu
         int opcion = -1;
         //Clase Scanner para resivir datos del teclado
-        var escanear = new Scanner(System.in);
+        Scanner escanear = new Scanner(System.in);
         /*Variable tipo ICatalogoPeliculas y que apunta a la clase CatalogoPeliculasImpl 
           para poder usar los metodos de la clase CatalogoPeliculasImpl*/ 
-        var catalogo = new CatalogoPeliculasImpl();
+        CatalogoPeliculasImpl catalogo = new CatalogoPeliculasImpl();
         
         //Se ejecuta este ciclo con el menu mientras la opcion no sea cero
         while (opcion != 0) {            
